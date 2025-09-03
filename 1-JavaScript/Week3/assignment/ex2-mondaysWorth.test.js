@@ -1,14 +1,4 @@
-/*------------------------------------------------------------------------------
-Full description atL https://github.com/HackYourFuture/Assignments/tree/main/1-JavaScript/Week4#exercise-2-whats-your-monday-worth
 
-- Complete the function names `computeEarnings`. It should take an array of
-  tasks and an hourly rate as arguments and return a formatted Euro amount
-  (e.g: `€11.34`) comprising the total earnings.
-- Use the `map` array function to take out the duration time for each task.
-- Multiply each duration by a hourly rate for billing and sum it all up.
-- Make sure the program can be used on any array of objects that contain a
-  `duration` property with a number value.
-------------------------------------------------------------------------------*/
 const mondayTasks = [
   {
     name: 'Daily standup',
@@ -30,16 +20,17 @@ const mondayTasks = [
 
 const hourlyRate = 25;
 
-function computeEarnings(mondayTasks, hourlyRate/* TODO parameter(s) go here */) {
-  // TODO complete this function
+function computeEarnings(mondayTasks, hourlyRate) {
+
   const estimateTime = mondayTasks
     .filter(timeTask => timeTask.duration !== undefined) // only if we have duration to avoid errors
     .map(timeTask => timeTask.duration)
-    //.reduce((sum, n) => sum + n, 0);
+    //.reduce((sum, n) => sum + n, 0);    //we can replace string below 
 
   const salaryPerTask = estimateTime.map (s => s / 60 * hourlyRate);
 
-  //const totalAmount = estimateTime / 60 * hourlyRate;
+  //const totalAmount = estimateTime / 60 * hourlyRate;   //we can replace string below 
+
   const totalAmount = salaryPerTask.reduce((sum, now) => sum + now, 0); // 0 - 1st value, now - current object, sum - accumulator
 
   return `€${totalAmount.toFixed(2)}`;
